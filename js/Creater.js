@@ -1,13 +1,3 @@
-var G_name = document.getElementById("G_name").value;
-var G_age = document.getElementById("G_age").value;
-var G_phone_number = document.getElementById("G_phone_number").value;
-var G_join_date = document.getElementById("G_join_date").value;
-var G_payment_date = document.getElementById("G_payment_date").value;
-var G_endup_date = document.getElementById("G_endup_date").value;
-var G_weight_at_join = document.getElementById("G_weight_at_join").value;
-var G_weight_at_update = document.getElementById("G_weight_at_update").value;
-var G_target_weight = document.getElementById("G_target_weight").value;
-
 //날짜 유효성 검사
 function isNotDatetime(d){
     var re = /[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/;
@@ -28,22 +18,7 @@ function isNotCellPhone(str) {
 
 //종합적인 입력값 유효성 검사
 function G_data_checker(){
-    {/* 출력 값 테스트
-    console.log("이름 빔 :                 "+(G_name === ''));
-    console.log("나이 빔 :                 "+(G_age == ''));
-    console.log("나이 포맷 불효 :          "+(Number.isInteger(G_age)));
-    console.log("전화번호 빔 :             " + (G_phone_number == ''));
-    console.log("전화번호 포맷 불효 :      "+ (isNotCellPhone(G_phone_number)));
-    console.log("가입일 빔 :               "+(G_join_date == ''));
-    console.log("가입일 포맷 불효 :        " + (isNotDatetime(G_join_date)));
-    console.log("만료일 빔 :               "+(G_endup_date == ''));
-    console.log("만료일 포맷 불효 :        "+(isNotDatetime(G_endup_date)));
-    console.log("가입시 몸무게 빔 :        "+(G_weight_at_join == ''));
-    console.log("가입시 몸무게 포맷 불효 : "+(Number.isInteger(G_weight_at_join)));
-    console.log("목표 몸무게 빔 :          "+(G_target_weight == ''));
-    console.log("목표 몸무게 포맷 불효 :   "+(Number.isInteger(G_target_weight)));
-    console.log("성별 선택 안함 :         "+(document.getElementById("male").checked === false)&&(document.getElementById("female").checked === false));
-    */}
+    //G_data_checker_logger() //출력값 테스트 개발자용
     if(G_name === ''){
         alert("이름을 입력해주세요.");
         return false;
@@ -86,16 +61,19 @@ function member_add(){
     if(checker){
             //테이블 행 추가를 위한 변수
             var table = document.getElementById("membertable");
-            var row = table.insertRow(-1);      //마지막 부분에 행 추가
+            table.deleteRow(-1);
+            var insrow = table.insertRow(-1);      //마지막 부분에 행 추가
             //열 추가
             var col = 0;                        
             var cell = new Array()
             while(col < 11) {
-                cell[col] = row.insertCell(col)
+                cell[col] = insrow.insertCell(col)
                 col = col + 1;
             }
+            //<tr>태그에 id값 추가
+            insrow.setAttribute("id", `CTID_`+member_index);
             // 열 내용 추가
-            cell[0].innerHTML = member_index+` <input type="radio" name="slect" value="`+ member_index +`"></input>`;
+            cell[0].innerHTML = member_index+` <input type="radio" name="CT_select" value="CTID_`+member_index +`"></input>`;
             cell[1].innerHTML = G_name;
             cell[2].innerHTML = G_age;
             if(document.getElementById("male").checked === true) {
@@ -113,5 +91,18 @@ function member_add(){
             // 열 추가 종료
         
             member_index = member_index + 1;        //인덱스 값 증가
+
+            col = 0;
+            var insrow = table.insertRow(-1);      //신규 버튼을 위한 빈행 추가
+            while(col < 11) {
+                cell[col] = insrow.insertCell(col)
+                col = col + 1;
+            }
+            col = 1;
+            cell[0].innerHTML = `N <input type="radio" name="CT_select" value="new"></input>`;
+            while(col < 11) {
+                cell[col].innerHTML = "-";
+                col = col + 1;
+            }
     }
 }
