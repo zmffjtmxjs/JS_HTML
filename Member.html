@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!-- Required meta tags -->
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
         <title>고객 정보 리스트</title>
-        <link rel="stylesheet" href="css/bootstrap.css">
         <style>
             table {text-align: center;}
         </style>
     </head>
     <body>
-        <table id="membertable" border="1" style="width:80%;">
+        <table id="membertable" border="1" style="width:95%;">
             <thead>                         <!--필드라인-->
                 <tr>
                     <th>선택</th>
@@ -66,52 +69,52 @@
                     <th colspan="6" style="font-size: 20pt;">고객 정보</th>
                 </tr>
                 <tr>
-                    <td class="from_labels">이름</td>
+                    <td>이름</td>
                     
                     <td>
                         <input type="text" size="15" name="name" value="이름 입력">
                     </td>
-                    <td class="from_labels">나이</td>
+                    <td>나이</td>
                     <td>
                         <input type="text" size="15" name="age" value="나이 입력">
                     </td>
-                    <td class="from_labels">성별</td>
+                    <td>성별</td>
                     <td>
                         <input type="radio" name="sex" value="male">남성
 			            <input type="radio" name="sex" value="female">여성
                     </td>
                 </tr>
                 <tr>
-                    <td class="from_labels">전화번호</td>
+                    <td>전화번호</td>
                     <td>
                         <input type="text" size="15" name="phone_number" value="전화번호 입력">
                     </td>
                     <td colspan="4"></td>
                 </tr>
                 <tr>
-                    <td class="from_labels">가입일</td>
+                    <td>가입일</td>
                     <td>
                         <input type="text" size="15" name="join_date" value="가입일 입력">
                     </td>
-                    <td class="from_labels">결제일</td>
+                    <td>결제일</td>
                     <td>
                         <input type="text" size="15" name="payment_date" value="결제일 입력">
                     </td>
-                    <td class="from_labels">만료일</td>
+                    <td>만료일</td>
                     <td>
                         <input type="text" size="15" name="endup_date" value="만료일 입력">
                     </td>
                 </tr>
                 <tr>
-                    <td class="from_labels">가입시 몸무게</td>
+                    <td>가입시 몸무게</td>
                     <td>
                         <input type="text" size="15" name="weight_at_join" value="가입시 몸무게 입력">
                     </td>
-                    <td class="from_labels">갱신시 몸무게</td>
+                    <td>갱신시 몸무게</td>
                     <td>
                         <input type="text" size="15" name="weight_at_update" value="갱신시 몸무게 입력">
                     </td>
-                    <td class="from_labels">목표 몸무게</td>
+                    <td>목표 몸무게</td>
                     <td>
                         <input type="text" size="15" name="target_weight" value="목표 몸무게 입력">
                     </td>
@@ -126,7 +129,9 @@
             </table>
             
         </form>
-        <!--jquery--><script src="js/jquery-3.5.1.min.js"></script>
-        <!--bootstrap--><script type="text/javascript" src="js/bootstrap.js"></script>
+        <!-- Bootstrap JS -->
+        <script src="js/jquery-3.5.1.min.js"></script>
+        <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+        <script src="js/bootstrap.min.js"></script>
     </body>
 </html>
