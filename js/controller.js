@@ -1,5 +1,6 @@
 var name = '';
 var age = '';
+var sex = '';
 var phone_number = '';
 var join_date = '';
 var payment_date = '';
