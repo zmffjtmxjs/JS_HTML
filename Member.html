@@ -7,102 +7,146 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <title>고객 정보 리스트</title>
-        <style>
-            table {text-align: center;}
-        </style>
     </head>
     <body>
-        <table id="membertable" border="1" style="width:95%;">
-            <thead>                         <!--필드라인-->
-                <tr>
-                    <th>선택</th>
-                    <th>이름</th>
-                    <th>나이</th>
-                    <th>성별</th>
-                    <th>전화번호</th>
-                    <th>가입일</th>
-                    <th>결제일</th>
-                    <th>만료일</th>
-                    <th>가입시<br>몸무게</th>
-                    <th>갱신시<br>몸무게</th>
-                    <th>목표<br>몸무게</th>
-                </tr>
-            </thead>
-            <tbody>                         <!--데이터, CRUD 영향지역, 동적구간-->
-                <!-- 더미데이터는 javascript로 자동 추가 -->
-            </tbody>
-        </table>
-        <br>
-        <form>
-            <table border="1">
-                <tr>
-                    <th colspan="6" style="font-size: 20pt;">고객 정보</th>
-                </tr>
-                <tr>
-                    <td>이름</td>
-                    <td>
-                        <input type="text" size="15" id="G_name" value="이름 입력">
-                    </td>
-                    <td>나이</td>
-                    <td>
-                        <input type="text" size="15" id="age" value="나이 입력">
-                    </td>
-                    <td>성별</td>
-                    <td>
-                        <input type="radio" name="sex" id="male" value="남성">남성
-			            <input type="radio" name="sex" id="female" value="여성">여성
-                    </td>
-                </tr>
-                <tr>
-                    <td>전화번호</td>
-                    <td>
-                        <input type="text" size="15" id="phone_number" value="전화번호 입력">
-                    </td>
-                    <td colspan="4"></td>
-                </tr>
-                <tr>
-                    <td>가입일</td>
-                    <td>
-                        <input type="text" size="15" id="join_date" value="가입일 입력">
-                    </td>
-                    <td>결제일</td>
-                    <td>
-                        <input type="text" size="15" id="payment_date" value="결제일 입력">
-                    </td>
-                    <td>만료일</td>
-                    <td>
-                        <input type="text" size="15" id="endup_date" value="만료일 입력">
-                    </td>
-                </tr>
-                <tr>
-                    <td>가입시 몸무게</td>
-                    <td>
-                        <input type="text" size="15" id="weight_at_join" value="가입시 몸무게 입력">
-                    </td>
-                    <td>갱신시 몸무게</td>
-                    <td>
-                        <input type="text" size="15" id="weight_at_update" value="갱신시 몸무게 입력">
-                    </td>
-                    <td>목표 몸무게</td>
-                    <td>
-                        <input type="text" size="15" id="target_weight" value="목표 몸무게 입력">
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="6">
-                        <input name="create" type="button" value="신규" onclick="member_add()">
-                        <input name="update" type="button" value="갱신">
-                        <input name="delete" type="button" value="삭제">
-                    </td>
-                </tr>
-            </table>
-            
-        </form>
+        <!-- Main Container Start -->
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <!-- Fantastic White Space -->
+                    <br />
+                </div>
+            </div>
 
-        <!-- Bootstrap JS -->
+            <div class="row">
+                <div class="col">
+                    <h1>고객 목록</h1>
+                    <hr />
+                    <!-- Member List Table Start -->
+                    <table id="membertable" class="table table-striped table-secondary">
+                        <thead>                         <!--필드라인-->
+                            <tr>
+                                <th>선택</th>
+                                <th>이름</th>
+                                <th>나이</th>
+                                <th>성별</th>
+                                <th>전화번호</th>
+                                <th>가입일</th>
+                                <th>결제일</th>
+                                <th>만료일</th>
+                                <th>가입시<br>몸무게</th>
+                                <th>갱신시<br>몸무게</th>
+                                <th>목표<br>몸무게</th>
+                            </tr>
+                        </thead>
+                        <tbody>                         <!--데이터, CRUD 영향지역, 동적구간-->
+                            <!-- 더미데이터는 javascript로 자동 추가 -->
+                        </tbody>
+                    </table>
+                    <!-- Member List Table End -->
+                </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+                <div class="col">
+                    <h1>고객 정보</h1>
+                    <hr />
+                    <!-- Member Input Table Start -->
+                    <form>
+                        <table class="table table-secondary">
+                            <thead>
+                                <tr>
+                                    <th colspan="2" class="text-center">신규</th>
+                                    <th colspan="2" class="text-center">갱신</th>
+                                    <th colspan="2" class="text-center">만료</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>이름</td>
+                                    <td>
+                                        <input type="text" class="form-control" size="15" id="G_name" placeholder="이름">
+                                    </td>
+                                    <td colspan="4"></td>
+                                </tr>
+                                <tr>
+                                    <td>나이</td>
+                                    <td>
+                                        <input type="number" class="form-control" size="15" id="G_age" placeholder="나이">
+                                    </td>
+                                    <td colspan="4"></td>
+                                </tr>
+                                <tr>
+                                    <td>성별</td>
+                                    <td>
+                                        <input type="radio" name="sex" id="male" value="male"><span>남성</span>&nbsp;
+                                        <input type="radio" name="sex" id="femail" value="female"><span>여성</span>
+                                    </td>
+                                    <td colspan="4"></td>
+                                </tr>
+                                <tr>
+                                    <td>전화번호</td>
+                                    <td>
+                                        <input type="text" class="form-control" size="15" id="G_phone_number" placeholder="전화번호">
+                                    </td>
+                                    <td colspan="4"></td>
+                                </tr>
+                                <tr>
+                                    <td>가입일</td>
+                                    <td>
+                                        <input type="date" class="form-control" size="15" id="G_join_date">
+                                    </td>
+                                    <td>결제일</td>
+                                    <td>
+                                        <input type="date" class="form-control" size="15" id="G_payment_date">
+                                    </td>
+                                    <td>만료일</td>
+                                    <td>
+                                        <input type="date" class="form-control" size="15" id="G_endup_date">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>가입시 몸무게</td>
+                                    <td>
+                                        <input type="number" class="form-control" size="15" id="G_weight_at_join" placeholder="몸무게 (kg)">
+                                    </td>
+                                    <td>갱신시 몸무게</td>
+                                    <td>
+                                        <input type="number" class="form-control" size="15" id="G_weight_at_update" placeholder="몸무게 (kg)">
+                                    </td>
+                                    <td>목표 몸무게</td>
+                                    <td>
+                                        <input type="number" class="form-control" size="15" id="G_target_weight" placeholder="몸무게 (kg)">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <input name="create" type="button" class="btn btn-primary form-control" value="신규" onclick="member_add()">
+                                    </td>
+                                    <td colspan="2">
+                                        <input name="update" type="button" class="btn btn-warning form-control" value="갱신">
+                                    </td>
+                                    <td colspan="2">
+                                        <input name="delete" type="button" class="btn btn-danger form-control" value="삭제">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                    </form>
+                    <!-- Member Input Table End -->
+                </div>
+            </div>
+        </div>
+        <!-- Main Container End -->
+
+
+        <!-- Bootstrap JS Start -->
         <script src="js/jquery-3.5.1.min.js"></script>
         <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <script src="js/controller.js"></script>
+        <!-- Bootstrap JS End -->
     </body>
 </html>
