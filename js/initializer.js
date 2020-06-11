@@ -51,7 +51,7 @@ function dumiDataPutter(name, age, sex, phone_number, join_date, payment_date, e
     }
     col = 1;
     insrow.setAttribute("id", "N");
-    cell[0].innerHTML = `N <input type="radio" name="CT_select" value="new" onclick="G_listRadio_action()"></input>`;
+    cell[0].innerHTML = `N <input type="radio" name="CT_select" id="new" value="new" onclick="G_listRadio_action()"></input>`;
     while(col < 11) {
         cell[col].innerHTML = "-";
         col = col + 1;
