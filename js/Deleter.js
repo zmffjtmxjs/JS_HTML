@@ -1,3 +1,5 @@
+//삭제 기능관련 코드만 포함
+
 function getRV(){
     var targetRow
     var d = document.getElementsByName('CT_select');

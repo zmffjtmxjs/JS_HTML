@@ -1,3 +1,5 @@
+//개발중에만 사용할 코드를 저장
+
 function G_data_checker_logger(){
     console.log("이름 빔 :                 "+(G_name === ''));
     console.log("나이 빔 :                 "+(G_age == ''));
