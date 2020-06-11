@@ -1,4 +1,5 @@
-//Creater.js, Deleter.js, Updater.js 모두가 사용하는 코드(변수선언, 함수) 등을 포함
+//두기능 이상이 사용하는 코드(변수선언, 함수 등)를 포함
+
 var member_index = 1;
 var field_name = ["G_name", "G_age", "G_sex", "G_phone_number", "G_join_date", "G_payment_date", "G_endup_date", "G_weight_at_join", "G_weight_at_update", "G_target_weight"];
 
@@ -118,12 +119,13 @@ function CT_selecter(){
 function CT_info(){
     var CTID_num = CT_selecter();
     var info_data = new Array();
-    for(var col = 1; col <= 10; col++) {
+    for(var col = 1; col <= field_name.length; col++) {
         info_data[col-1] = document.getElementById(CTID_num+`-`+col).innerHTML;
     }
     return info_data;
 }
 
+//값 입력을 막는 코드를 줄이기 위한 함수
 function disable_edit_lunch(id, bool){
    return document.getElementById(id).disabled = bool;
 }
@@ -133,6 +135,7 @@ function G_listRadio_action(){
     var Q_selected = CT_selecter()
     
     if (Q_selected == "new"){                                //신규 사용자에 체크될 경우 입력폼의 값을 변수로 가져옴.
+        {//신규버튼, 가입시 몸무게, 가입일 활성화 & 갱신버튼, 삭제버튼, 결제일, 갱신시 몸무게 비활성화
         disable_edit_lunch("create", false);
         disable_edit_lunch("update", true);
         disable_edit_lunch("delete", true);
@@ -140,6 +143,7 @@ function G_listRadio_action(){
         disable_edit_lunch("G_weight_at_update", true);
         disable_edit_lunch("G_weight_at_join", false);
         disable_edit_lunch("G_join_date", false);
+        }
         for(var col = 0; col < field_name.length; col++){
             if(col == 2){
                 document.getElementById('male').checked = false;
@@ -149,6 +153,7 @@ function G_listRadio_action(){
             }
         }
     } else if(Q_selected != undefined){                      //라디오가 신규(왼쪽 끝 하단)에 체크되어 있지 않으면 체크된 라디오 행의 데이터를 입력폼으로 가져옴.
+        {//신규버튼, 가입시 몸무게, 가입일 비활성화 & 갱신버튼, 삭제버튼, 결제일, 갱신시 몸무게 활성화
         disable_edit_lunch("create", true);
         disable_edit_lunch("update", false);
         disable_edit_lunch("delete", false);
@@ -156,6 +161,7 @@ function G_listRadio_action(){
         disable_edit_lunch("G_weight_at_update", false);
         disable_edit_lunch("G_weight_at_join", true);
         disable_edit_lunch("G_join_date", true);
+        }
 
         var info_data = CT_info();
         for(var col = 0; col < field_name.length; col++){
@@ -169,4 +175,27 @@ function G_listRadio_action(){
             }
         }
     }
+}
+
+function G_value_collecter(){
+            var G_values = new Array();
+
+            //입력값들을 배열에 저장
+            G_values[0] = document.getElementById("G_name").value;
+            G_values[1] = document.getElementById("G_age").value;
+            {//선택한 성별 출력
+            if(document.getElementById("male").checked === true)
+                G_values[2] = "남성";
+            else if(document.getElementById("female").checked === true)
+                G_values[2] = "여성";
+            }
+            G_values[3] = document.getElementById("G_phone_number").value;
+            G_values[4] = document.getElementById("G_join_date").value;
+            G_values[5] = document.getElementById("G_payment_date").value;
+            G_values[6] = document.getElementById("G_endup_date").value;
+            G_values[7] = document.getElementById("G_weight_at_join").value;
+            G_values[8] = document.getElementById("G_weight_at_update").value;
+            G_values[9] = document.getElementById("G_target_weight").value;
+            
+            return G_values;
 }
