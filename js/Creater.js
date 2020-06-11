@@ -54,5 +54,6 @@ function member_add() {
         //신규 행의 열 추가 종료
 
         listRadio_action();                   //추가된 행의 값을 입력폼에 덮어씀(수정모드로 전환됨)
+        scroll_to_member_info();                   //추가된 행의 위치로 스크롤 이동
     }
 }

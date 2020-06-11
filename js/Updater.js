@@ -17,8 +17,11 @@ function member_set(){
             cell[col].innerHTML = null;                 //원본 값 제거
             cell[col].innerHTML = get_values[col];        //새로운 값 입력
         }
-        listRadio_action();                           //입력폼에 변경된 값으로 새로덮어씀
-    }
         // 열 내용 변경 종료
+
+        listRadio_action();                           //입력폼에 변경된 값으로 새로덮어씀
+        scroll_to_member_info();                      //수정된 행으로 스크롤 이동
+    }
+        
 
 }

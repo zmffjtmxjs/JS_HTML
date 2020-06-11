@@ -172,7 +172,7 @@ function listRadio_action(ask_move) {
             <input id="delete" type="button" class="btn btn-danger form-control" value="삭제" onclick="member_del()">
         </td>
         <td colspan="2">
-            <input type="button" class="btn btn-info form-control" value="고객 목록으로 돌아가기" onclick="scroll_to_CTinfo()">
+            <input type="button" class="btn btn-info form-control" value="고객 목록으로 돌아가기" onclick="scroll_to_member_info()">
         </td>
         `
 
@@ -222,7 +222,7 @@ function scroll_to_tableTop() {
     elmnt.scrollIntoView();
 }
 
-function scroll_to_CTinfo() {
+function scroll_to_member_info() {
     var id = member_selecter();
 
     const element = document.getElementById(id);
