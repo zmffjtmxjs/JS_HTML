@@ -166,7 +166,7 @@ function member_add(){
             cell[col].setAttribute("id", CTID+`-`+col)  //출력예시: CTID_1-1
         }
 
-        cell[0].innerHTML = member_index+` <input type="radio" name="CT_select" id="CTID_`+member_index+`_Radio" value="CTID_`+member_index+` onclick="G_listRadio_action()""></input>`;
+        cell[0].innerHTML = member_index+` <input type="radio" name="CT_select" id="CTID_`+member_index+`_Radio" value="CTID_`+member_index+`" onclick="G_listRadio_action()""></input>`;
         for(col = 1; col < 11; col++) {                 //내용 추가 작업
             cell[col].innerHTML = G_values[(col-1)]
         }
