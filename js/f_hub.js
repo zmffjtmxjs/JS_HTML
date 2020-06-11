@@ -55,12 +55,23 @@ function CT_info(){
     return info_data;
 }
 
+function disable_edit_lunch(id, bool){
+   return document.getElementById(id).disabled = bool;
+}
+
 //테이블 내에 있는 라디오 버튼에 대한 입력폼의 반응
 function G_listRadio_action(){
     var Q_selected = CT_selecter()
     var field_name = ["G_name", "G_age", "G_sex", "G_phone_number", "G_join_date", "G_payment_date", "G_endup_date", "G_weight_at_join", "G_weight_at_update", "G_target_weight"];
     
     if (Q_selected == "new"){                                //신규 사용자에 체크될 경우 입력폼의 값을 변수로 가져옴.
+        disable_edit_lunch("create", false);
+        disable_edit_lunch("update", true);
+        disable_edit_lunch("delete", true);
+        disable_edit_lunch("G_payment_date", true);
+        disable_edit_lunch("G_weight_at_update", true);
+        disable_edit_lunch("G_weight_at_join", false);
+        disable_edit_lunch("G_join_date", false);
         for(var col = 0; col < field_name.length; col++){
             if(col == 2){
                 document.getElementById('male').checked = false;
@@ -70,6 +81,14 @@ function G_listRadio_action(){
             }
         }
     } else if(Q_selected != undefined){                      //라디오가 신규(왼쪽 끝 하단)에 체크되어 있지 않으면 체크된 라디오 행의 데이터를 입력폼으로 가져옴.
+        disable_edit_lunch("create", true);
+        disable_edit_lunch("update", false);
+        disable_edit_lunch("delete", false);
+        disable_edit_lunch("G_payment_date", false);
+        disable_edit_lunch("G_weight_at_update", false);
+        disable_edit_lunch("G_weight_at_join", true);
+        disable_edit_lunch("G_join_date", true);
+
         var info_data = CT_info();
         for(var col = 0; col < field_name.length; col++){
             if(col == 2){

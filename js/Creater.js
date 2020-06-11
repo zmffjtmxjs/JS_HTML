@@ -39,6 +39,7 @@ function dumiDataPutter(name, age, sex, phone_number, join_date, payment_date, e
     cell[9].innerHTML = weight_at_update;
     cell[10].innerHTML = target_weight;
    
+    document.getElementById(`CTID_`+member_index+`_Radio`).checked = true;
 
     member_index = member_index + 1;
 
@@ -59,6 +60,7 @@ function dumiDataPutter(name, age, sex, phone_number, join_date, payment_date, e
 
 dumiDataPutter("안지수", "27", "남성", "010-4831-7921", "2020-02-10", "2020-05-10", "2020-08-10", "89", "87", "75", 0);
 dumiDataPutter("박남일", "22", "남성", "010-4641-3133", "2020-06-10", "2020-06-10", "2020-09-10", "85", "85", "80", 1);
+G_listRadio_action()
 
 //입력값 유효성 검사 (삽입 기능 전용)
 function G_value_checker(G_values){
