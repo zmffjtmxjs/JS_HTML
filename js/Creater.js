@@ -62,69 +62,6 @@ dumiDataPutter("안지수", "27", "남성", "010-4831-7921", "2020-02-10", "2020
 dumiDataPutter("박남일", "22", "남성", "010-4641-3133", "2020-06-10", "2020-06-10", "2020-09-10", "85", "85", "80", 1);
 G_listRadio_action()
 
-//입력값 유효성 검사 (삽입 기능 전용)
-function G_value_checker(G_values){
-    for (var arr_num = 0; arr_num <= 9; arr_num++){
-        var V_check = G_values[arr_num];
-        console.log(V_check);
-    }
-    console.log("배열 출력 끝");
-    for (var arr_num = 0; arr_num <= 9; arr_num++){
-        var V_check = G_values[arr_num];
-        console.log(V_check);
-        switch(arr_num){
-            case 0:
-                if(V_check === ''){
-                    alert("이름을 입력해주세요.");
-                    return false;
-                }
-                break;
-            case 1:
-                if((V_check == '') || (Number.isInteger(V_check))){
-                    alert("입력한 나이를 확인해주세요.");
-                    return false;
-                }
-                break;
-            case 2:
-                if(G_name === ''){
-                    alert("성별을 체크해주세요.");
-                    return false;
-                }
-                break;
-            case 3:
-                if((V_check == '') || (isNotCellPhone(V_check))){
-                    alert("입력한 전화번호를 확인해주세요.");
-                    return false;
-                }
-                break;
-            case 4:
-                if((V_check == '') || (isNotDatetime(V_check))){
-                    alert("입력한 가입일을 확인해주세요.");
-                    return false;
-                }
-                break;
-            case 6:
-                if((V_check == '') || (isNotDatetime(V_check))){
-                    alert("입력한 만료일을 확인해주세요.");
-                    return false;
-                }
-                break;
-            case 7:
-                if((V_check == '') || (Number.isInteger(V_check))){
-                    alert("입력한 현재 몸무게를 확인해주세요.");
-                    return false;
-                }
-                break;
-            case 9:
-                if((V_check == '') || (Number.isInteger(V_check))){
-                    alert("입력한 목표 몸무게를 확인해주세요.");
-                    return false;
-                }
-                break;
-        }
-    }
-    return true;
-}
 
 //신규 멤버 추가 함수
 function member_add(){                                                  
@@ -142,7 +79,7 @@ function member_add(){
     var G_weight_at_join = document.getElementById("G_weight_at_join").value;
     var G_weight_at_update = G_weight_at_join;
     var G_target_weight = document.getElementById("G_target_weight").value;
-      
+
     var G_values = [G_name, G_age, G_sex, G_phone_number, G_join_date, G_payment_date, G_endup_date, G_weight_at_join, G_weight_at_update, G_target_weight]
 
     var checker = G_value_checker(G_values);                            //유효성 검사기
@@ -186,5 +123,6 @@ function member_add(){
         for(col = 1; col < 11; col++) {
             cell[col].innerHTML = "-";
         }
+        G_listRadio_action()
     }
 }

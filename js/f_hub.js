@@ -1,21 +1,6 @@
 //Creater.js, Deleter.js, Updater.js 모두가 사용하는 코드(변수선언, 함수) 등을 포함
-
-// var G_name = document.getElementById("G_name").value;
-// var G_age = document.getElementById("G_age").value;
-// var G_sex
-// var G_phone_number = document.getElementById("G_phone_number").value;
-// var G_join_date = document.getElementById("G_join_date").value;
-// var G_payment_date = document.getElementById("G_payment_date").value;
-// var G_endup_date = document.getElementById("G_endup_date").value;
-// var G_weight_at_join = document.getElementById("G_weight_at_join").value;
-// var G_weight_at_update = document.getElementById("G_weight_at_update").value;
-// var G_target_weight = document.getElementById("G_target_weight").value;
-
-/*
-CTID_*는 각 고객정보에 대한 식별값임
-*/
-
 var member_index = 1;
+var field_name = ["G_name", "G_age", "G_sex", "G_phone_number", "G_join_date", "G_payment_date", "G_endup_date", "G_weight_at_join", "G_weight_at_update", "G_target_weight"];
 
 //날짜 유효성 검사
 function isNotDatetime(d){
@@ -34,6 +19,90 @@ function isNotCellPhone(str) {
 	}
 	return false;
 };
+
+//입력값 유효성 검사
+function G_value_checker(G_values){
+    for (var arr_num = 0; arr_num <= 9; arr_num++){
+        var V_check = G_values[arr_num];
+        console.log(V_check);
+    }
+    console.log("배열 출력 끝");
+    for (var arr_num = 0; arr_num <= 9; arr_num++){
+        var V_check = G_values[arr_num];
+        console.log(V_check);
+        
+        //성별은 라디오 타입이므로 예외처리
+        if(arr_num == 2){
+            if(V_check === ''){
+                alert("성별을 체크해주세요.");
+                return false;
+            }
+            continue;
+        }
+        
+        //삽입, 수정당시 입력이 가능했던 것들만 유효성 검사
+        if(document.getElementById(field_name[arr_num]).disabled === false){
+            console.log(field_name[arr_num]+` 체크했음`);
+            switch(arr_num){
+                case 0:
+                    if(V_check === ''){
+                        alert("이름을 입력해주세요.");
+                        return false;
+                    }
+                    break;
+                case 1:
+                    if((V_check == '') || (Number.isInteger(V_check))){
+                        alert("입력한 나이를 확인해주세요.");
+                        return false;
+                    }
+                    break;
+                case 3:
+                    if((V_check == '') || (isNotCellPhone(V_check))){
+                        alert("입력한 전화번호를 확인해주세요.");
+                        return false;
+                    }
+                    break;
+                case 4:
+                    if((V_check == '') || (isNotDatetime(V_check))){
+                        alert("입력한 가입일을 확인해주세요.");
+                        return false;
+                    }
+                    break;
+                case 5: //
+                    if((V_check == '') || (isNotDatetime(V_check))){
+                        alert("입력한 결제일을 확인해주세요.");
+                        return false;
+                    }
+                    break;
+                case 6:
+                    if((V_check == '') || (isNotDatetime(V_check))){
+                        alert("입력한 만료일을 확인해주세요.");
+                        return false;
+                    }
+                    break;
+                case 7:
+                    if((V_check == '') || (Number.isInteger(V_check))){
+                        alert("입력한 현재 몸무게를 확인해주세요.");
+                        return false;
+                    }
+                    break;
+                case 8: //
+                    if((V_check == '') || (isNotDatetime(V_check))){
+                        alert("입력한 갱신시 몸무게를 확인해주세요.");
+                        return false;
+                    }
+                    break;
+                case 9:
+                    if((V_check == '') || (Number.isInteger(V_check))){
+                        alert("입력한 목표 몸무게를 확인해주세요.");
+                        return false;
+                    }
+                    break;
+            }
+        }
+    }
+    return true;
+}
 
 //CT_select이름을 가진 radio 버튼중 선택된 것의 CTID값을 가져옴
 function CT_selecter(){
@@ -62,7 +131,6 @@ function disable_edit_lunch(id, bool){
 //테이블 내에 있는 라디오 버튼에 대한 입력폼의 반응
 function G_listRadio_action(){
     var Q_selected = CT_selecter()
-    var field_name = ["G_name", "G_age", "G_sex", "G_phone_number", "G_join_date", "G_payment_date", "G_endup_date", "G_weight_at_join", "G_weight_at_update", "G_target_weight"];
     
     if (Q_selected == "new"){                                //신규 사용자에 체크될 경우 입력폼의 값을 변수로 가져옴.
         disable_edit_lunch("create", false);

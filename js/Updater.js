@@ -3,9 +3,10 @@
 function member_set(){
     var G_name = document.getElementById("G_name").value;
     var G_age = document.getElementById("G_age").value;
-    if(document.getElementById("male").checked === true) {
+    {//선택한 성별 출력
+    if(document.getElementById("male").checked === true)
         var G_sex = "남성";
-    } else if(document.getElementById("female").checked === true) {
+    else if(document.getElementById("female").checked === true)
         var G_sex = "여성";
     }
     var G_phone_number = document.getElementById("G_phone_number").value;
