@@ -126,28 +126,27 @@ function G_value_checker(G_values){
 
 //신규 멤버 추가 함수
 function member_add(){                                                  
-    var G_values = G_value_getter();                                    //입력된 값들을 변수로 가져오기
+    var G_name = document.getElementById("G_name").value;
+    var G_age = document.getElementById("G_age").value;
+    if(document.getElementById("male").checked === true) {
+        var G_sex = "남성";
+    } else if(document.getElementById("female").checked === true) {
+        var G_sex = "여성";
+    }
+    var G_phone_number = document.getElementById("G_phone_number").value;
+    var G_join_date = document.getElementById("G_join_date").value;
+    var G_payment_date = G_join_date;
+    var G_endup_date = document.getElementById("G_endup_date").value;
+    var G_weight_at_join = document.getElementById("G_weight_at_join").value;
+    var G_weight_at_update = G_weight_at_join;
+    var G_target_weight = document.getElementById("G_target_weight").value;
+      
+    var G_values = [G_name, G_age, G_sex, G_phone_number, G_join_date, G_payment_date, G_endup_date, G_weight_at_join, G_weight_at_update, G_target_weight]
+
     var checker = G_value_checker(G_values);                            //유효성 검사기
     var col;                                                            //반복문 '행' 카운터
 
     if(checker){
-        var G_name = document.getElementById("G_name").value;
-        var G_age = document.getElementById("G_age").value;
-        if(document.getElementById("male").checked === true) {
-            var G_sex = "남성";
-        } else if(document.getElementById("female").checked === true) {
-            var G_sex = "여성";
-        }
-        var G_phone_number = document.getElementById("G_phone_number").value;
-        var G_join_date = document.getElementById("G_join_date").value;
-        var G_payment_date = G_join_date;
-        var G_endup_date = document.getElementById("G_endup_date").value;
-        var G_weight_at_join = document.getElementById("G_weight_at_join").value;
-        var G_weight_at_update = G_weight_at_join;
-        var G_target_weight = document.getElementById("G_target_weight").value;
-        
-        var G_values = [G_name, G_age, G_sex, G_phone_number, G_join_date, G_payment_date, G_endup_date, G_weight_at_join, G_weight_at_update, G_target_weight]
-
         var table = document.getElementById("membertable"); //수정 목표 테이블 지정
         var CTID = `CTID_`+member_index;                //id 지정에 쓰일 변수 출력예시 : CTID_1
     
