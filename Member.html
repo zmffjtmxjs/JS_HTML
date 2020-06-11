@@ -23,7 +23,6 @@
                     <h1>고객 목록</h1>
                     <hr />
                     <!-- Member List Table Start -->
-                    <form id="memberList">
                         <table id="membertable" class="table table-striped table-secondary">
                             <thead>                         <!--필드라인-->
                                 <tr>
@@ -35,20 +34,15 @@
                                     <th>가입일</th>
                                     <th>결제일</th>
                                     <th>만료일</th>
-                                    <th>가입시<br>몸무게</th>
-                                    <th>갱신시<br>몸무게</th>
-                                    <th>목표<br>몸무게</th>
+                                    <th>가입시 몸무게</th>
+                                    <th>갱신시 몸무게</th>
+                                    <th>목표 몸무게</th>
                                 </tr>
                             </thead>
                             <tbody>                         <!--데이터, CRUD 영향지역, 동적구간-->
                                 <!-- 더미데이터는 javascript로 자동 추가 -->
-                                <tr>
-                                    <td><input type="radio" name="slect" value="new"></input></td>
-                                    <td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
-                                </tr>
                             </tbody>
                         </table>
-                    </form>
                     <!-- Member List Table End -->
                 </div>
             </div>
@@ -95,14 +89,15 @@
                                 <tr>
                                     <td>전화번호</td>
                                     <td>
-                                        <input type="text" class="form-control" id="G_phone_number" placeholder="전화번호">
+                                        <input type="tel" class="form-control" id="G_phone_number" placeholder="전화번호">
                                     </td>
                                     <td colspan="4"></td>
                                 </tr>
                                 <tr>
                                     <td>가입일</td>
                                     <td>
-                                        <input type="date" class="form-control" id="G_join_date">                                    </td>
+                                        <input type="date" class="form-control" id="G_join_date">
+                                    </td>
                                     <td>결제일</td>
                                     <td>
                                         <input type="date" class="form-control" id="G_payment_date">
@@ -157,8 +152,8 @@
         <script src="js/f_hub.js"></script>
         <script src="js/Creater.js"></script>
         <script src="js/Deleter.js"></script>
-        <script src="js/Updater.js"></script>
-        <script src="js/fordev.js"></script>
+        <!-- <script src="js/Updater.js"></script> -->
+        <!-- <script src="js/fordev.js"></script> -->
         <!-- *.JS import End -->
     </body>
 </html>
