@@ -11,10 +11,10 @@ function member_set(){
     }
     var G_phone_number = document.getElementById("G_phone_number").value;
     var G_join_date = document.getElementById("G_join_date").value;
-    var G_payment_date = G_join_date;
+    var G_payment_date = document.getElementById("G_payment_date").value;
     var G_endup_date = document.getElementById("G_endup_date").value;
     var G_weight_at_join = document.getElementById("G_weight_at_join").value;
-    var G_weight_at_update = G_weight_at_join;
+    var G_weight_at_update = document.getElementById("G_weight_at_update").value;
     var G_target_weight = document.getElementById("G_target_weight").value;
       
     var G_values = [G_name, G_age, G_sex, G_phone_number, G_join_date, G_payment_date, G_endup_date, G_weight_at_join, G_weight_at_update, G_target_weight]
@@ -23,38 +23,19 @@ function member_set(){
     var col;                                                            //반복문 '행' 카운터
 
     if(checker){
-        var CTID = `CTID_`+member_index;                //id 지정에 쓰일 변수 출력예시 : CTID_1
+        var CTID = CT_selecter();                       //수정할 행의 id
 
-        // 열 추가 작업
+        // 열 내용 변경
         var cell = new Array()                          //11개의 열에 대한 배열
-        for(col=0; col < 11; col++) {
-            cell[col] = insrow.insertCell(col)
+        for(col=0; col <= 9; col++) {
+            cell[col] = document.getElementById(CTID+`-`+((col)+1));
         }
-    
-        insrow.setAttribute("id", CTID);                //추가될 행(<tr>)에 대한 id값 추가 [출력예시 : id="CTID_1"]
-        
-        for(col = 0 ;col < 11; col++) {                 //11개의 열(<td>)에 대한 id값 추가
-            cell[col].setAttribute("id", CTID+`-`+col)  //출력예시: CTID_1-1
+        for(col=0; col <= 9; col++) {
+            cell[col].innerHTML = null;                 //원본 값 제거
+            cell[col].innerHTML = G_values[col];        //새로운 값 입력
         }
-
-        cell[0].innerHTML = member_index+` <input type="radio" name="CT_select" id="CTID_`+member_index+`_Radio" value="CTID_`+member_index+`" onclick="G_listRadio_action()""></input>`;
-        for(col = 1; col < 11; col++) {                 //내용 추가 작업
-            // cell[col].innerHTML = G_values[(col-1)]
-            
-        }
-        // 열 추가 종료
-        document.getElementById(`CTID_`+member_index+`_Radio`).checked = true;
-        
-        member_index = member_index + 1;        //인덱스 값 증가
-
-        var insrow = table.insertRow(-1);       //신규 버튼을 위한 빈행 추가
-        for(col = 0; col < 11; col++) {
-        cell[col] = insrow.insertCell(col)
-        }
-        col = 1;
-        cell[0].innerHTML = `N <input type="radio" name="CT_select" id="new" value="new" onclick="G_listRadio_action()"></input>`;
-        for(col = 1; col < 11; col++) {
-            cell[col].innerHTML = "-";
-        }
+        G_listRadio_action()
     }
+        // 열 내용 변경 종료
+
 }

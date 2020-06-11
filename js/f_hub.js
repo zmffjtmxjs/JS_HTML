@@ -22,14 +22,14 @@ function isNotCellPhone(str) {
 
 //입력값 유효성 검사
 function G_value_checker(G_values){
+    // for (var arr_num = 0; arr_num <= 9; arr_num++){
+    //     var V_check = G_values[arr_num];
+    //     console.log(V_check);
+    // }
+    // console.log("배열 출력 끝");
     for (var arr_num = 0; arr_num <= 9; arr_num++){
         var V_check = G_values[arr_num];
-        console.log(V_check);
-    }
-    console.log("배열 출력 끝");
-    for (var arr_num = 0; arr_num <= 9; arr_num++){
-        var V_check = G_values[arr_num];
-        console.log(V_check);
+        // console.log(V_check);
         
         //성별은 라디오 타입이므로 예외처리
         if(arr_num == 2){
@@ -42,7 +42,7 @@ function G_value_checker(G_values){
         
         //삽입, 수정당시 입력이 가능했던 것들만 유효성 검사
         if(document.getElementById(field_name[arr_num]).disabled === false){
-            console.log(field_name[arr_num]+` 체크했음`);
+            // console.log(field_name[arr_num]+` 체크했음`);
             switch(arr_num){
                 case 0:
                     if(V_check === ''){
@@ -68,7 +68,7 @@ function G_value_checker(G_values){
                         return false;
                     }
                     break;
-                case 5: //
+                case 5:
                     if((V_check == '') || (isNotDatetime(V_check))){
                         alert("입력한 결제일을 확인해주세요.");
                         return false;
@@ -86,8 +86,8 @@ function G_value_checker(G_values){
                         return false;
                     }
                     break;
-                case 8: //
-                    if((V_check == '') || (isNotDatetime(V_check))){
+                case 8:
+                    if((V_check == '') || (Number.isInteger(V_check))){
                         alert("입력한 갱신시 몸무게를 확인해주세요.");
                         return false;
                     }
