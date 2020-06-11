@@ -20,7 +20,7 @@
 
             <div class="row">
                 <div class="col">
-                    <h1>고객 목록</h1>
+                    <h1 id="table_top">고객 목록</h1>
                     <hr />
                     <!-- Member List Table Start -->
                         <table id="membertable" class="table table-striped table-secondary">
@@ -132,9 +132,14 @@
                                         <input id="delete" type="button" class="btn btn-danger form-control" value="삭제" onclick="member_del()">
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td colspan="6">
+                                        <input type="button" class="btn btn-primary form-control" value="고객 목록으로 돌아가기" onclick="scroll_to_table()">
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
-                        
+                        <p id="form_bottom"></p>
                     </form>
                     <!-- Member Input Table End -->
                 </div>
@@ -149,11 +154,11 @@
         <script src="js/framework/bootstrap.min.js"></script>
         <!-- Bootstrap JS End -->
         <!-- *.JS import Start -->
-        <script src="js/f_hub.js"></script>
-        <script src="js/Creater.js"></script>
-        <script src="js/Deleter.js"></script>
-        <script src="js/Updater.js"></script>
-        <!-- <script src="js/fordev.js"></script> -->
+        <script src="js/f_hub.js"></script>         <!-- 다른 기능들의 작동을 돕는 부속 함수를 적재 -->
+        <script src="js/Creater.js"></script>       <!-- 삽입 기능만 포함 -->
+        <script src="js/Updater.js"></script>       <!-- 수정 기능만 포함 -->
+        <script src="js/Deleter.js"></script>       <!-- 삭제 기능만 포함 -->
+        <script src="js/initializer.js"></script>   <!-- 초기화면 구성해주는 더미데이터 실행코드를 적재 -->
         <!-- *.JS import End -->
     </body>
 </html>
