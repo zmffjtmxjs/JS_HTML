@@ -29,7 +29,7 @@ var G_values = G_value_collecter();
             cell[col].setAttribute("id", CTID+`-`+col); //출력예시: CTID_1-1
         }
 
-        cell[0].innerHTML = member_index+` <input type="radio" name="CT_select" id="CTID_`+member_index+`_Radio" value="CTID_`+member_index+`" onclick="G_listRadio_action()""></input>`;
+        cell[0].innerHTML = `<input type="radio" name="CT_select" id="CTID_`+member_index+`_Radio" value="CTID_`+member_index+`" onclick="G_listRadio_action(1)""></input>`;
         for(col = 1; col <= field_name.length; col++) {                 //내용 추가 작업
             cell[col].innerHTML = G_values[(col-1)];
         }
@@ -44,7 +44,7 @@ var G_values = G_value_collecter();
         cell[col] = insrow.insertCell(col);
         }
         col = 1;
-        cell[0].innerHTML = `N <input type="radio" name="CT_select" id="new" value="new" onclick="G_listRadio_action()"></input>`;
+        cell[0].innerHTML = `N <input type="radio" name="CT_select" id="new" value="new" onclick="G_listRadio_action(1)"></input>`;
         for(col = 1; col <= field_name.length; col++) {
             cell[col].innerHTML = "-";
         }

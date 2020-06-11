@@ -20,7 +20,7 @@
 
             <div class="row">
                 <div class="col">
-                    <h1>고객 목록</h1>
+                    <h1 id="table_top">고객 목록</h1>
                     <hr />
                     <!-- Member List Table Start -->
                         <table id="membertable" class="table table-striped table-secondary">
@@ -132,9 +132,14 @@
                                         <input id="delete" type="button" class="btn btn-danger form-control" value="삭제" onclick="member_del()">
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td colspan="6">
+                                        <input type="button" class="btn btn-primary form-control" value="고객 목록으로 돌아가기" onclick="scroll_to_table()">
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
-                        
+                        <p id="form_bottom"></p>
                     </form>
                     <!-- Member Input Table End -->
                 </div>

@@ -131,7 +131,7 @@ function disable_edit_lunch(id, bool){
 }
 
 //테이블 내에 있는 라디오 버튼에 대한 입력폼의 반응
-function G_listRadio_action(){
+function G_listRadio_action(Q_move){
     var Q_selected = CT_selecter()
     
     if (Q_selected == "new"){                                //신규 사용자에 체크될 경우 입력폼의 값을 변수로 가져옴.
@@ -175,6 +175,8 @@ function G_listRadio_action(){
             }
         }
     }
+    if (Q_move == 1)
+        scroll_to_form();
 }
 
 function G_value_collecter(){
@@ -198,4 +200,26 @@ function G_value_collecter(){
             G_values[9] = document.getElementById("G_target_weight").value;
             
             return G_values;
+}
+
+function scroll_to_table(){
+    var id = CT_selecter();
+    if(id == 'new'){
+        var elmnt = document.getElementById("table_top");
+        elmnt.scrollIntoView(true);
+    }
+    else{
+        const element = document.getElementById(id);
+        const elementRect = element.getBoundingClientRect();
+        const absoluteElementTop = elementRect.top + window.pageYOffset;
+        const middle = absoluteElementTop - (window.innerHeight / 2);
+        window.scrollTo(0, middle);
+    }
+}
+
+    
+
+function scroll_to_form(){
+    var elmnt = document.getElementById("form_bottom");
+    elmnt.scrollIntoView(false);
 }

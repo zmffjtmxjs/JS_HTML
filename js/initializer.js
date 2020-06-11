@@ -27,7 +27,7 @@ function dumiDataPutter(name, age, sex, phone_number, join_date, payment_date, e
     }
 
 
-    cell[0].innerHTML = member_index+` <input type="radio" name="CT_select" id="CTID_`+member_index+`_Radio" value="CTID_`+member_index +`" onclick="G_listRadio_action()"></input>`;
+    cell[0].innerHTML = `<input type="radio" name="CT_select" id="CTID_`+member_index+`_Radio" value="CTID_`+member_index +`" onclick="G_listRadio_action(1)"></input>`;
     cell[1].innerHTML = name;
     cell[2].innerHTML = age;
     cell[3].innerHTML = sex;
@@ -39,7 +39,7 @@ function dumiDataPutter(name, age, sex, phone_number, join_date, payment_date, e
     cell[9].innerHTML = weight_at_update;
     cell[10].innerHTML = target_weight;
    
-    document.getElementById(`CTID_`+member_index+`_Radio`).checked = true;
+    
 
     member_index = member_index + 1;
 
@@ -51,13 +51,20 @@ function dumiDataPutter(name, age, sex, phone_number, join_date, payment_date, e
     }
     col = 1;
     insrow.setAttribute("id", "N");
-    cell[0].innerHTML = `N <input type="radio" name="CT_select" id="new" value="new" onclick="G_listRadio_action()"></input>`;
+    cell[0].innerHTML = `N <input type="radio" name="CT_select" id="new" value="new" onclick="G_listRadio_action(1)"></input>`;
     while(col < 11) {
         cell[col].innerHTML = "-";
         col = col + 1;
     }
+
+    document.getElementById("new").checked = true;
+    
 }
 
 dumiDataPutter("안지수", "27", "남성", "010-4831-7921", "2020-02-10", "2020-05-10", "2020-08-10", "89", "87", "75", 0);
 dumiDataPutter("박남일", "22", "남성", "010-4641-3133", "2020-06-10", "2020-06-10", "2020-09-10", "85", "85", "80", 1);
-G_listRadio_action();
+dumiDataPutter("김건우", "25", "남성", "010-1541-9432", "2020-01-25", "2020-04-25", "2020-07-25", "80", "78", "75", 1);
+dumiDataPutter("김미혜", "21", "여성", "010-9785-1374", "2019-12-07", "2020-06-07", "2020-09-07", "70", "65", "60", 1);
+
+
+G_listRadio_action(0);
