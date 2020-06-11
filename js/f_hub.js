@@ -135,15 +135,24 @@ function G_listRadio_action(Q_move){
     var Q_selected = CT_selecter()
     
     if (Q_selected == "new"){                                //신규 사용자에 체크될 경우 입력폼의 값을 변수로 가져옴.
-        {//신규버튼, 가입시 몸무게, 가입일 활성화 & 갱신버튼, 삭제버튼, 결제일, 갱신시 몸무게 비활성화
-        disable_edit_lunch("create", false);
-        disable_edit_lunch("update", true);
-        disable_edit_lunch("delete", true);
+        {//가입시 몸무게, 가입일 활성화 & 결제일, 갱신시 몸무게 비활성화
         disable_edit_lunch("G_payment_date", true);
         disable_edit_lunch("G_weight_at_update", true);
         disable_edit_lunch("G_weight_at_join", false);
         disable_edit_lunch("G_join_date", false);
         }
+
+        var control_row = document.getElementById("controler_row");
+        control_row.innerHTML = null;
+        control_row.innerHTML = `
+        <td colspan="4">
+            <input id="create" type="button" class="btn btn-primary form-control" value="등록" onclick="member_add()">
+        </td>
+        <td colspan="2">
+            <input type="button" class="btn btn-info form-control" value="고객 목록으로 돌아가기" onclick="scroll_to_tableTop()">
+        </td>
+        `
+
         for(var col = 0; col < field_name.length; col++){
             if(col == 2){
                 document.getElementById('male').checked = false;
@@ -153,15 +162,26 @@ function G_listRadio_action(Q_move){
             }
         }
     } else if(Q_selected != undefined){                      //라디오가 신규(왼쪽 끝 하단)에 체크되어 있지 않으면 체크된 라디오 행의 데이터를 입력폼으로 가져옴.
-        {//신규버튼, 가입시 몸무게, 가입일 비활성화 & 갱신버튼, 삭제버튼, 결제일, 갱신시 몸무게 활성화
-        disable_edit_lunch("create", true);
-        disable_edit_lunch("update", false);
-        disable_edit_lunch("delete", false);
+        {//가입시 몸무게, 가입일 비활성화 &  결제일, 갱신시 몸무게 활성화
         disable_edit_lunch("G_payment_date", false);
         disable_edit_lunch("G_weight_at_update", false);
         disable_edit_lunch("G_weight_at_join", true);
         disable_edit_lunch("G_join_date", true);
         }
+
+        var control_row = document.getElementById("controler_row");
+        control_row.innerHTML = null;
+        control_row.innerHTML = `
+        <td colspan="2">
+        <input id="update" type="button" class="btn btn-warning form-control" value="갱신" onclick="member_set()">
+        </td>
+        <td colspan="2">
+            <input id="delete" type="button" class="btn btn-danger form-control" value="삭제" onclick="member_del()">
+        </td>
+        <td colspan="2">
+            <input type="button" class="btn btn-info form-control" value="고객 목록으로 돌아가기" onclick="scroll_to_CTinfo()">
+        </td>
+        `
 
         var info_data = CT_info();
         for(var col = 0; col < field_name.length; col++){
@@ -202,22 +222,20 @@ function G_value_collecter(){
             return G_values;
 }
 
-function scroll_to_table(){
-    var id = CT_selecter();
-    if(id == 'new'){
-        var elmnt = document.getElementById("table_top");
-        elmnt.scrollIntoView(true);
-    }
-    else{
-        const element = document.getElementById(id);
-        const elementRect = element.getBoundingClientRect();
-        const absoluteElementTop = elementRect.top + window.pageYOffset;
-        const middle = absoluteElementTop - (window.innerHeight / 2);
-        window.scrollTo(0, middle);
-    }
+function scroll_to_tableTop(){
+    var elmnt = document.getElementById("table_top");
+    elmnt.scrollIntoView();
 }
 
-    
+function scroll_to_CTinfo(){
+    var id = CT_selecter();
+
+    const element = document.getElementById(id);
+    const elementRect = element.getBoundingClientRect();
+    const absoluteElementTop = elementRect.top + window.pageYOffset;
+    const middle = absoluteElementTop - (window.innerHeight / 2);
+    window.scrollTo(0, middle);
+}
 
 function scroll_to_form(){
     var elmnt = document.getElementById("form_bottom");
