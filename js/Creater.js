@@ -27,7 +27,7 @@ function dumiDataPutter(name, age, sex, phone_number, join_date, payment_date, e
     }
 
 
-    cell[0].innerHTML = member_index+` <input type="radio" name="CT_select" value="CTID_`+member_index +`" onclick="G_listRadio_action()"></input>`;
+    cell[0].innerHTML = member_index+` <input type="radio" name="CT_select" id="CTID_`+member_index+`_Radio" value="CTID_`+member_index +`" onclick="G_listRadio_action()"></input>`;
     cell[1].innerHTML = name;
     cell[2].innerHTML = age;
     cell[3].innerHTML = sex;
@@ -166,12 +166,12 @@ function member_add(){
             cell[col].setAttribute("id", CTID+`-`+col)  //출력예시: CTID_1-1
         }
 
-        cell[0].innerHTML = member_index+` <input type="radio" name="CT_select" value="CTID_`+member_index+` onclick="G_listRadio_action()""></input>`;
+        cell[0].innerHTML = member_index+` <input type="radio" name="CT_select" id="CTID_`+member_index+`_Radio" value="CTID_`+member_index+` onclick="G_listRadio_action()""></input>`;
         for(col = 1; col < 11; col++) {                 //내용 추가 작업
             cell[col].innerHTML = G_values[(col-1)]
         }
         // 열 추가 종료
-        document.getElementsByName('CT_select')
+        document.getElementById(`CTID_`+member_index+`_Radio`).checked = true;
         
         member_index = member_index + 1;        //인덱스 값 증가
 
@@ -180,7 +180,7 @@ function member_add(){
         cell[col] = insrow.insertCell(col)
         }
         col = 1;
-        cell[0].innerHTML = `N <input type="radio" name="CT_select" value="new" onclick="G_listRadio_action()"></input>`;
+        cell[0].innerHTML = `N <input type="radio" name="CT_select" id="new" value="new" onclick="G_listRadio_action()"></input>`;
         for(col = 1; col < 11; col++) {
             cell[col].innerHTML = "-";
         }
